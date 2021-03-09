@@ -10,7 +10,16 @@
                 <form class="sign-page__form" action="{{ route('password.email') }}" method="POST">
                     @csrf
                     <input name="email" type="email" class="text text--left" placeholder="ایمیل">
-
+                    @error('email')
+                    <p style="color: red">
+                        {{ $message }}
+                    </p>
+                @enderror
+                @if (Session::has('status'))
+                <p style="color: green">
+                    {{ Session::get('status') }}
+                </p>
+                @endif
                     <button class="btn btn--blue btn--shadow-blue width-100" type="submit">بازیابی</button>
                     <div class="sign-page__footer">
                         <span>کاربر جدید هستید؟</span>
@@ -21,3 +30,4 @@
         </div>
     </main>
 </x-app-layout>
+

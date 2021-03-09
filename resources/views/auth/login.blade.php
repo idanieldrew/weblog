@@ -20,6 +20,9 @@
                             {{ $message }}
                         </p>
                     @enderror
+                    @if (Session::has('status'))
+                        <p style="color: green">{{ Session::get('status') }}</p>
+                    @endif
                     <label class="checkbox text--right">
                         <input type="checkbox" class="checkbox__filter">
                         <span class="checkbox__mark position-relative"></span>
