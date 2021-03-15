@@ -1,165 +1,76 @@
-<x-app-layout>
-  <x-slot name='title'>
-      صفحه اصلی
-  </x-slot>
-<main>
-    <article class="container article">
-        <div class="articles">
-            <div class="articles__item">
-                <a href="laravel.html" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/anuglar.png') }}" class="articles__img-src">
+<x-app-layout>  
+    <x-slot name="title">
+        Main
+    </x-slot>
+  <!-- Start Blog  -->
+    <div class="latest-blog">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="title-all text-center">
+                        <h1>latest blog</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
                     </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول چیست ؟ فریم ورک لاراول چیست ؟ </h2>
-                    </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                    </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
+                </div>
             </div>
-            <div class="articles__item">
-                <a href="#" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/aparat.jpg') }}" class="articles__img-src">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{{ asset('weblog/images/blog-img.jpg') }}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Fusce in augue non nisi fringilla</h3>
+                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i class="far fa-comments"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول چیست ؟ </h2>
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{{ asset('weblog/images/blog-img-01.jpg') }}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Fusce in augue non nisi fringilla</h3>
+                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i class="far fa-comments"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
+                </div>
+                <div class="col-md-6 col-lg-4 col-xl-4">
+                    <div class="blog-box">
+                        <div class="blog-img">
+                            <img class="img-fluid" src="{{ asset('weblog/images/blog-img-02.jpg') }}" alt="" />
+                        </div>
+                        <div class="blog-content">
+                            <div class="title-blog">
+                                <h3>Fusce in augue non nisi fringilla</h3>
+                                <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed mollis. Praesent laoreet lacinia elit id lobortis.</p>
+                            </div>
+                            <ul class="option-blog">
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i class="far fa-heart"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i class="fas fa-eye"></i></a></li>
+                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i class="far fa-comments"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
-            </div>
-            <div class="articles__item">
-                <a href="#" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/aparat.jpg') }}" class="articles__img-src">
-                    </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
-                            فریم ورک لاراول فریم ورک لاراول</h2>
-                    </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                    </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
-            </div>
-            <div class="articles__item">
-                <a href="#" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/aparat.jpg') }}" class="articles__img-src">
-                    </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
-                            فریم ورک لاراول فریم ورک لاراول</h2>
-                    </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                    </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
-            </div>
-            <div class="articles__item">
-                <a href="#" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/aparat.jpg') }}" class="articles__img-src">
-                    </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
-                            فریم ورک لاراول فریم ورک لاراول</h2>
-                    </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                    </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
-            </div>
-            <div class="articles__item">
-                <a href="#" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/aparat.jpg') }}" class="articles__img-src">
-                    </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
-                            فریم ورک لاراول فریم ورک لاراول</h2>
-                    </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                    </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
-            </div>
-            <div class="articles__item">
-                <a href="#" class="articles__link">
-                    <div class="articles__img">
-                        <img src="{{ asset('img/banner/aparat.jpg') }}" class="articles__img-src">
-                    </div>
-                    <div class="articles__title">
-                        <h2>فریم ورک لاراول فریم ورک لاراول فریم ورک فریم ورک لاراول فریم ورک لاراول فریم ورک لاراول
-                            فریم ورک لاراول فریم ورک لاراول</h2>
-                    </div>
-                    <div class="articles__desc">
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                        ساعاتی قبل شیائومی از جدیدترین ساعت هوشمند خود رونمایی کرد که قرار است با نام می واچ لایت راهی
-                        بازار ...
-                    </div>
-                    <div class="articles__details">
-                        <div class="articles__author">نویسنده : محمد نیکو</div>
-                        <div class="articles__date">تاریخ : 1399/09/22</div>
-                    </div>
-                </a>
+                </div>
             </div>
         </div>
-    </article>
-    <div class="pagination">
-        <a href="" class="pagination__page pagination__page--prev"></a>
-        <a href="" class="pagination__page pagination__page--current">1</a>
-        <a href="" class="pagination__page ">2</a>
-        <a href="" class="pagination__page ">3</a>
-        <a href="" class="pagination__page ">4</a>
-        <a href="" class="pagination__page ">...</a>
-        <a href="" class="pagination__page ">99</a>
-        <a href="" class="pagination__page ">100</a>
-        <a href="" class="pagination__page pagination__page--next"></a>
     </div>
-</main>
+    <!-- End Blog  -->
 </x-app-layout>
+ 

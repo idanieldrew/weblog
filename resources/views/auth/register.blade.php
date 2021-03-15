@@ -1,56 +1,72 @@
 <x-app-layout>
-    <x-slot name='title'>
-        صفحه ورورد
+    <x-slot name="title">
+        Register
     </x-slot>
-    <main class="bg--white">
-        <div class="container">
-            <div class="sign-page">
-                <h1 class="sign-page__title">ثبت نام در وب‌سایت</h1>
-                <form class="sign-page__form" action="{{ route('register.store') }}" method="POST">
+  <!-- Content Wrapper -->
+   <div class="login-wrapper">
+    <div class="back-link">
+        <a href="index.html" class="btn btn-add">Back to Dashboard</a>
+    </div>
+    <div class="container-center lg">
+     <div class="login-area">
+        <div class="panel panel-bd panel-custom">
+            <div class="panel-heading">
+                <div class="view-header">
+                    <div class="header-icon">
+                        <i class="pe-7s-unlock"></i>
+                    </div>
+                    <div class="header-title">
+                        <h3>Register</h3>
+                        <small><strong>Please enter your data to register.</strong></small>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+                @if ($errors)
+                @foreach ($errors->all() as $e)
+                    <ul>
+                        <li>{{  $e }}</li>
+                    </ul>
+                @endforeach
+            @endif
+                <form action="{{ route('register.store') }}" method="POST" id="loginForm" novalidate>
                     @csrf
-                    <div>
-                        <input type="text" class="text text--right" placeholder="نام  و نام خانوادگی" name="name">
-                        @error('name')
-                            <p style="color: red">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-                    <div>
-                        <input type="text" class="text text--left" placeholder="شماره موبایل" name="phone">
-                        @error('phone')
-                            <p style="color: red">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-                    <div>
-                        <input type="email" class="text text--left" placeholder="ایمیل" name="email">
-                        @error('email')
-                            <p style="color: red">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-                    <div>
-                        <input type="password" class="text text--left" placeholder="رمز عبور" name="password">
-                        @error('password')
-                            <p style="color: red">
-                                {{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-                    <div>
-                        <input type="password" class="text text--left" placeholder="تکرار رمز عبور"
-                            name="password_confirmation">
-                        <button class="btn btn--blue btn--shadow-blue width-100 mb-10" type="submit">ثبت نام</button>
-                        <div class="sign-page__footer">
-                            <span>در سایت عضوید ؟ </span>
-                            <a href="sign-up.html" class="color--46b2f0">صفحه ورود</a>
+                    <div class="row">
+                        <div class="form-group col-lg-6">
+                            <label>name</label>
+                            <input type="name" value="" id="username" class="form-control" name="name">
+                            <span class="help-block small">Your unique username to app</span>
                         </div>
+                        <div class="form-group col-lg-6">
+                            <label>Email</label>
+                            <input type="email" value="" id="username" class="form-control" name="email">
+                            <span class="help-block small">Your unique username to app</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Phone</label>
+                            <input type="text" id="username" class="form-control" name="phone">
+                            <span class="help-block small">Your unique username to app</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Password</label>
+                            <input type="password" value="" id="password" class="form-control" name="password">
+                            <span class="help-block small">Your hard to guess password</span>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label>Repeat Password</label>
+                            <input type="password" value="" id="repeatpassword" class="form-control" name="password_confirmation">
+                            <span class="help-block small">Please repeat your pasword</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-warning" type="submit">Register</button>
+                        <a class="btn btn-add" href="login.html">Login</a>
+                    </div>
                 </form>
+                </div>
             </div>
         </div>
-    </main>
-
+    </div>
+</div>
+<!-- /.content-wrapper -->
 </x-app-layout>

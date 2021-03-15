@@ -1,42 +1,55 @@
 <x-app-layout>
-    <x-slot name='title'>
-        صفحه لاگین
+    <x-slot name="title">
+        Login
     </x-slot>
-    <main class="bg--white">
-        <div class="container">
-            <div class="sign-page">
-                <h1 class="sign-page__title">ورود به وب‌سایت</h1>
-                <form class="sign-page__form" action="{{ route('login.store') }}" method="post">
-                    @csrf
-                    <input type="text" name="email" class="text text--left" placeholder="شماره یا ایمیل">
-                    @error('email')
-                        <p style="color: red">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                    <input type="password" name="password" class="text text--left" placeholder="رمز عبور">
-                    @error('password')
-                        <p style="color: red">
-                            {{ $message }}
-                        </p>
-                    @enderror
-                    @if (Session::has('status'))
-                        <p style="color: green">{{ Session::get('status') }}</p>
-                    @endif
-                    <label class="checkbox text--right">
-                        <input type="checkbox" class="checkbox__filter">
-                        <span class="checkbox__mark position-relative"></span>
-                        مرا بخاطر بسپار
-                    </label>
-                    <a class="recover-password" href="{{ route('password.request') }}">بازیابی رمز عبور</a>
-                    <button class="btn btn--blue btn--shadow-blue width-100" type="submit">ورود به سایت</button>
-                    <div class="sign-page__footer">
-                        <span>کاربر جدید هستید؟</span>
-                        <a href="sign-in.html" class="color--46b2f0">صفحه ثبت نام</a>
+    <!-- Content Wrapper -->
+    <div class="login-wrapper">
+        {{-- <div class="back-link">
+        <a href="index.html" class="btn btn-add">Back to Dashboard</a>
+    </div> --}}
+        <div class="container-center">
+            <div class="login-area">
+                <div class="panel panel-bd panel-custom">
+                    <div class="panel-heading">
+                        <div class="view-header">
+                            <div class="header-icon">
+                                <i class="pe-7s-unlock"></i>
+                            </div>
+                            <div class="header-title">
+                                <h3>Login</h3>
+                                <small><strong>Please enter your credentials to login.</strong></small>
+                            </div>
+                        </div>
                     </div>
-                </form>
+                    <div class="panel-body">
+                        @if ($errors)
+                            @foreach ($errors->all as $e)
+                                <ul>
+                                    <li>$e</li>
+                                </ul>
+                            @endforeach
+                        @endif
+                        <form action="{{ route('login.store') }}" id="loginForm" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label class="control-label" for="username">Username/Phone</label>
+                                <input type="email" placeholder="example@gmail.com" name="email" id="username"
+                                    class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="password">Password</label>
+                                <input type="password" title="Please enter your password" name="password" id="password"
+                                    class="form-control">
+                            </div>
+                            <div>
+                                <button class="btn btn-add" type="submit">Login</button>
+                                <a class="btn btn-warning" href="register.html">Register</a>
+                                <a class="btn btn-warning" href="{{ route('password.request') }}">Forget Password</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-
-    </main>
+    </div>
 </x-app-layout>
