@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +18,21 @@ Route::get('/', function () {
     return view('weblog/landing');
 })->name('landing-page');
 
+Route::prefix('panel')->middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard.Dashboard');
+    })->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard.main');
-})->middleware(['auth'])->name('dashboard');
+    Route::get('/user', [UserController::class, 'show'])->name('user.show');
 
-require __DIR__.'/auth.php';
+    Route::get('/add-user', [UserController::class, 'index'])->name('user.index');
+
+    Route::post('/user', [UserController::class, 'store'])->name('user.store');
+
+    Route::get('user/{id}', [UserController::class, 'edit'])->name('user.edit');
+
+    Route::put('/user/{user}', [UserController::class, 'update'])->name('user.update');
+
+});
+
+require __DIR__ . '/auth.php';

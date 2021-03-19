@@ -23,9 +23,9 @@
                     </div>
                     <div class="panel-body">
                         @if ($errors)
-                            @foreach ($errors->all as $e)
+                            @foreach ($errors->all() as $e)
                                 <ul>
-                                    <li>$e</li>
+                                    <li>{{ $e }}</li>
                                 </ul>
                             @endforeach
                         @endif
