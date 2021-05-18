@@ -109,6 +109,7 @@
                                 <table id="dataTableExample1" class="table table-bordered table-striped table-hover">
                                     <thead>
                                         <tr class="info">
+                                            <th>Id</th>
                                             <th>Photo</th>
                                             <th>Name</th>
                                             <th>Email</th>
@@ -122,29 +123,47 @@
                                     <tbody>
                                         @foreach ($users as $user)
                                             <tr>
+                                                <td>
+                                                    {{ $user->id }}
+                                                </td>
                                                 <td><img src="{{ asset('panel/assets/dist/img/m1.png') }}"
                                                         class="img-circle" alt="User Image" width="50" height="50"></td>
                                                 <td>{{ $user->name }}</td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->phone }}</td>
-                                                <td>{{ $user->updated_at }}</td>
+                                                <td>{{ getStandardFormatDate($user->created_at) }}</td>
                                                 <td><span
-                                                        class="label-custom label label-default">{{ $user->role }}</span>
+                                                        class="label-custom label label-default">
+                                                        @foreach($user->roles as $role)
+                                                        {{ $role->name }}</span>                                                            
+                                                        @endforeach
                                                 </td>
                                                 <td><span class="label-custom label label-default">Active</span>
                                                 </td>
                                                 <td>
                                                     <a href="{{ route('user.edit', $user->id) }}"
-                                                        class="btn btn-add btn-sm" data-toggle="modal"><i
-                                                            class="fa fa-pencil"></i></a>
-                                                    <button type="button" class="btn btn-danger btn-sm"
-                                                        data-toggle="modal" data-target="#customer2"><i
-                                                            class="fa fa-trash-o"></i> </button>
+                                                        class="btn btn-add btn-sm" data-toggle="modal">
+                                                        <i class="fa fa-pencil">
+                                                        </i>
+                                                    </a>
+                                                    <a href="{{ route('user.destroy', $user->id) }}"
+                                                        onclick="destroyUser(event,{{ $user->id }})"
+                                                        class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-trash-o">
+                                                        </i>
+                                                    </a>
+                                                    <form action="{{ route('user.destroy', $user->id) }}"
+                                                        method="post" id="delete-{{ $user->id }}"
+                                                        style="display: inline">
+                                                        @method('delete')
+                                                        @csrf
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $users->onEachSide(5)->links() }}
                             </div>
                         </div>
                     </div>
@@ -152,7 +171,7 @@
             </div>
             <!-- User Modal1 -->
 
-            <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-hidden="true">
+            {{-- <div class="modal fade" id="adduser" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
@@ -201,11 +220,11 @@
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
-            </div>
+            </div> --}}
             <!-- /.modal -->
             <!-- Modal -->
             <!-- delete user Modal2 -->
-            <div class="modal fade" id="customer2" tabindex="-1" role="dialog" aria-hidden="true">
+            {{-- <div class="modal fade" id="customer2" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header modal-header-primary">
@@ -215,17 +234,22 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form class="form-horizontal">
-                                        <fieldset>
-                                            <div class="col-md-12 form-group user-form-group">
-                                                <label class="control-label">Delete User</label>
-                                                <div class="pull-right">
-                                                    <button type="button" class="btn btn-danger btn-sm">NO</button>
-                                                    <button type="submit" class="btn btn-add btn-sm">YES</button>
-                                                </div>
+                                    <fieldset>
+                                        <div class="col-md-12 form-group user-form-group">
+                                            <label class="control-label">Delete User</label>
+                                            <div class="pull-right">
+                                                <button type="button" class="btn btn-danger btn-sm">NO</button>
+                                                <a href="{{ route('user.destroy', $user->id) }}"
+                                                    onclick="destroyUser(event,{{ $user->id }})"
+                                                    class="btn btn-primary btn-sm" id="delete-user">YES</a>
+                                                <form action="{{ route('user.destroy', $user->id) }}" method="post"
+                                                    id="delete-{{ $user->id }}" style="display: inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                </form>
                                             </div>
-                                        </fieldset>
-                                    </form>
+                                        </div>
+                                    </fieldset>
                                 </div>
                             </div>
                         </div>
@@ -236,10 +260,16 @@
                     <!-- /.modal-content -->
                 </div>
                 <!-- /.modal-dialog -->
-            </div>
+            </div> --}}
             <!-- /.modal -->
         </section>
         <!-- /.content -->
     </div>
+    <script>
+        function destroyUser(event, id) {
+            event.preventDefault();
+            document.getElementById(`delete-${id}`).submit();
+        }
 
+    </script>
 </x-panel-layout>

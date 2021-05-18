@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Site Metas -->
-    <title>Weblog - {{ $title ?? '' }}</title>
+    <title>Weblog {{ $title ?? '' }}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -28,18 +28,19 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/custom.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- Favicon and touch icons -->
-  <link rel="shortcut icon" href="{{ asset('panel/assets/dist/img/ico/favicon.png') }}" type="image/x-icon">
-  <!-- Bootstrap -->
-  <link href="{{ asset('panel/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css"/>
-  <!-- Bootstrap rtl -->
-  <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
-  <!-- Pe-icon-7-stroke -->
-  <link href="{{ asset('panel/assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}" rel="stylesheet" type="text/css"/>
-  <!-- style css -->
-  <link href="{{ asset('panel/assets/dist/css/stylecrm.css') }}" rel="stylesheet" type="text/css"/>
-  <!-- Theme style rtl -->
-  <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="{{ asset('panel/assets/dist/img/ico/favicon.png') }}" type="image/x-icon">
+    <!-- Bootstrap -->
+    <link href="{{ asset('panel/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap rtl -->
+    <!--<link href="assets/bootstrap-rtl/bootstrap-rtl.min.css" rel="stylesheet" type="text/css"/>-->
+    <!-- Pe-icon-7-stroke -->
+    <link href="{{ asset('panel/assets/pe-icon-7-stroke/css/pe-icon-7-stroke.css') }}" rel="stylesheet"
+        type="text/css" />
+    <!-- style css -->
+    <link href="{{ asset('panel/assets/dist/css/stylecrm.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Theme style rtl -->
+    <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -87,10 +88,10 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="custom-select-box">
                         <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-						<option>¥ JPY</option>
-						<option>$ USD</option>
-						<option>€ EUR</option>
-					</select>
+                            <option>¥ JPY</option>
+                            <option>$ USD</option>
+                            <option>€ EUR</option>
+                        </select>
                     </div>
                     <div class="right-phone-box">
                         <p>Call US :- <a href="#"> +11 900 800 100</a></p>
@@ -115,9 +116,10 @@
             <div class="container">
                 <!-- Start Header Navigation -->
                 <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fa fa-bars"></i>
-                </button>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa fa-bars"></i>
+                    </button>
                     {{-- <a class="navbar-brand" href="index.html"><img src="{{ asset('weblog/images/logo.png') }}" class="logo" alt=""></a> --}}
                 </div>
                 <!-- End Header Navigation -->
@@ -125,10 +127,41 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="navbar-menu">
                     <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Main</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                        
+                        @foreach ($categories as $category)
+                            <li class="dropdown dropdown-user">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    {{ $category->name }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @foreach ($category->child as $child)
+                                        <li>
+                                            <a href="profile.html">
+                                                <i class="fa fa-user"></i>{{ $child->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                        @endforeach
+                        @guest
+                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                        @else
+                            <li class="dropdown dropdown-user">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="{{ asset('panel/assets/dist/img/avatar5.png') }}" class="img-circle"
+                                        width="45" height="45" alt="user"></a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="profile.html">
+                                            <i class="fa fa-user"></i> User Profile</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
+                                    <li><a href="login.html">
+                                            <i class="fa fa-sign-out"></i> Signout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endguest
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -138,9 +171,9 @@
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                         <li class="side-menu"><a href="#">
-						<i class="fa fa-shopping-bag"></i>
-                            <span class="badge">3</span>
-					</a></li>
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">3</span>
+                            </a></li>
                     </ul>
                 </div>
                 <!-- End Atribute Navigation -->
@@ -151,17 +184,20 @@
                 <li class="cart-box">
                     <ul class="cart-list">
                         <li>
-                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-01.jpg') }}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-01.jpg') }}"
+                                    class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Delica omtantur </a></h6>
                             <p>1x - <span class="price">$80.00</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-02.jpg') }}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-02.jpg') }}"
+                                    class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Omnes ocurreret</a></h6>
                             <p>1x - <span class="price">$60.00</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-03.jpg') }}" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-03.jpg') }}"
+                                    class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Agam facilisis</a></h6>
                             <p>1x - <span class="price">$40.00</span></p>
                         </li>
@@ -190,8 +226,8 @@
     </div>
     <!-- End Top Search -->
     {{ $slot }}
-       <!-- Start Instagram Feed  -->
-       <div class="instagram-box">
+    <!-- Start Instagram Feed  -->
+    <div class="instagram-box">
         <div class="main-instagram owl-carousel owl-theme">
             <div class="item">
                 <div class="ins-inner-box">
@@ -286,8 +322,10 @@
                     <div class="col-lg-4 col-md-12 col-sm-12">
                         <div class="footer-widget">
                             <h4>About ThewayShop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
                             <ul>
                                 <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                                 <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
@@ -317,13 +355,16 @@
                             <h4>Contact Us</h4>
                             <ul>
                                 <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston
+                                        Street Wichita,<br> KS 67213 </p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705
+                                            770</a></p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    <p><i class="fas fa-envelope"></i>Email: <a
+                                            href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
                                 </li>
                             </ul>
                         </div>
@@ -348,10 +389,10 @@
     <script src="{{ asset('weblog/js/popper.min.js') }}"></script>
     <script src="{{ asset('weblog/js/bootstrap.min.js') }}"></script>
     <!-- /.content-wrapper -->
-        <!-- jQuery -->
-        <script src="{{ asset('panel/assets/plugins/jQuery/jquery-1.12.4.min.js') }}" type="text/javascript"></script>
-        <!-- bootstrap js -->
-        <script src="{{ asset('panel/assets/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <!-- jQuery -->
+    <script src="{{ asset('panel/assets/plugins/jQuery/jquery-1.12.4.min.js') }}" type="text/javascript"></script>
+    <!-- bootstrap js -->
+    <script src="{{ asset('panel/assets/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
     <!-- ALL PLUGINS -->
     <script src="{{ asset('weblog/js/jquery.superslides.min.js') }}"></script>
     <script src="{{ asset('weblog/js/bootstrap-select.js') }}"></script>

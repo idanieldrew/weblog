@@ -81,7 +81,9 @@
                                     </select>
                                 </div>
                                 <div class="reset-button">
+                                    @can('edit articles')
                                     <a href="#" class="btn btn-warning">Reset</a>
+                                    @endcan
                                     <button type="submit" class="btn btn-success">Save</button>
                                 </div>
                             </form>

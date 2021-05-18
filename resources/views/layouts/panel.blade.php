@@ -7,6 +7,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{ $headers ?? '' }}
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title>Panel {{ $title ?? '' }}</title>
     <!-- Favicon and touch icons -->
     {{-- <link rel="shortcut icon" href="{{ asset('panel/assets/dist/img/ico/favicon.png') }}" type="image/x-icon"> --}}
@@ -32,19 +35,22 @@
     <link href="{{ asset('panel/assets/themify-icons/themify-icons.css') }}" rel="stylesheet" type="text/css" />
     <!-- End Global Mandatory Style
          =====================================================================-->
-    <!-- Start page Label Plugins 
+    <!-- Start page Label Plugins
          =====================================================================-->
     <!-- Emojionearea -->
     <link href="{{ asset('panel/assets/plugins/emojionearea/emojionearea.min.css') }}" rel="stylesheet"
         type="text/css" />
     <!-- Monthly css -->
     <link href="{{ asset('panel/assets/plugins/monthly/monthly.css') }}" rel="stylesheet" type="text/css" />
-    <!-- End page Label Plugins 
+    <!-- End page Label Plugins
          =====================================================================-->
     <!-- Start Theme Layout Style
          =====================================================================-->
     <!-- Theme style -->
     <link href="{{ asset('panel/assets/dist/css/stylecrm.css') }}" rel="stylesheet" type="text/css" />
+
+
+
     <!-- Theme style rtl -->
     <!--<link href="assets/dist/css/stylecrm-rtl.css" rel="stylesheet" type="text/css"/>-->
     <!-- End Theme Layout Style
@@ -157,7 +163,7 @@
                                             <!-- start message -->
                                             <a href="#" class="border-gray">
                                                 <div class="pull-left">
-                                                    <img src="assets/dist/img/avatar.png" class="img-circle"
+                                                    <img src="{{ asset('Avatar/avatar5.png') }}" class="img-circle"
                                                         alt="User Image">
                                                 </div>
                                                 <h4>Ronaldo</h4>
@@ -170,7 +176,7 @@
                                         <li>
                                             <a href="#" class="border-gray">
                                                 <div class="pull-left">
-                                                    <img src="assets/dist/img/avatar2.png" class="img-circle"
+                                                    <img src="{{ asset('Avatar/avatar5.png') }}" class="img-circle"
                                                         alt="User Image">
                                                 </div>
                                                 <h4>Leo messi</h4>
@@ -335,11 +341,11 @@
                         <!-- user -->
                         <li class="dropdown dropdown-user">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="assets/dist/img/avatar5.png" class="img-circle" width="45" height="45"
+                                <img src="{{ asset('Avatar/avatar5.png') }}" class="img-circle" width="45" height="45"
                                     alt="user"></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="profile.html">
+                                    <a href="{{ route('profile.edit',auth()->user()->id) }}">
                                         <i class="fa fa-user"></i> User Profile</a>
                                 </li>
                                 <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
@@ -637,7 +643,7 @@
                             <span class="pull-right-container">
                             </span>
                         </a>
-                    </li> 
+                    </li>
                     </comment> --}}
                     <li class="treeview">
                         <a href="#">
@@ -647,10 +653,41 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('user.index') }}">Add</a></li>
-                            <li><a href="clist.html">Edit</a></li>
+                            <li><a href="{{ route('user.create') }}">Add</a></li>
                             <li><a href="{{ route('user.show') }}">Show</a></li>
                         </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i><span>Category</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('category.create') }}">Add</a></li>
+                            <li><a href="{{ route('category.index') }}">Show</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i><span>Post</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('post.create') }}">Add</a></li>
+                            <li><a href="{{ route('post.index') }}">Show</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="treeview">
+                        <a href="{{ route('comment.index') }}">
+                            <i class="fa fa-users"></i><span>Comment</span>
+                            <span class="pull-right-container">
+                            </span>
+                        </a>
                     </li>
                     {{-- <li>
                         <a href="items.html">
@@ -757,7 +794,15 @@
          =====================================================================-->
     <!-- Dashboard js -->
     <script src="{{ asset('panel/assets/dist/js/dashboard.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('weblog/js/ajax.js') }}"  defer></script> --}}
+
+    {{-- me --}}
+    {{ $scripts ?? '' }}
+
+
     <!-- End Theme label Script
+
+
          =====================================================================-->
     <script>
         function dash() {

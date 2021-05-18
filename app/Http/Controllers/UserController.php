@@ -7,6 +7,8 @@ use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -17,9 +19,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.user.add');
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -27,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.user.add');
     }
 
     /**
@@ -56,7 +57,7 @@ class UserController extends Controller
      */
     public function show()
     {
-        $users = User::all();
+        $users = User::paginate(5);
 
         return view('dashboard.user.show', compact('users'))->with('orginal-message', 'users');
     }
@@ -67,11 +68,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user, Role $role)
     {
-        $user = User::where('id', $id)->first();
-
-        return view('dashboard.user.edit', compact('user'));
+        return view('dashboard.user.edit', compact('user', 'role'));
     }
 
     /**
@@ -81,26 +80,29 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $user, Role $role)
     {
-        dd($user);
         $request->validate([
-            'name' => 'required|string|max:100',
-            'email' => ['reqired,string,email,max:100', Rule::unique('users')->ignore($user->id)],
-            'phone' => ['reqired,string,max:11', Rule::unique('users')->ignore($user->id)],
-            'role' => 'required'
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'phone' => ['required', 'string', 'max:255', Rule::unique('users')->ignore($user->id)],
+            'role' => ['max:255']
         ]);
-        return redirect()->route('dashboard.user.show')->with('success-message', 'user updated is successfully');
+        $role->update($request->only('name'));
+        $user->update($request->only(['name', 'email', 'phone', 'role']));
+        return redirect()->route('user.show')->with('success-message', 'user updated is successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int  $user
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('user.show')->with('success-message', 'deleted is successfully');
     }
 }

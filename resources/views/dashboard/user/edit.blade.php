@@ -34,8 +34,8 @@
                                 </ul>
                             @endif
                             <form class="col-sm-6" action="{{ route('user.update',$user->id) }}" method="POST">
-                                @csrf
                                 @method('put')
+                                @csrf
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" name="name" class="form-control" placeholder="Enter Name"
@@ -69,10 +69,10 @@
                                 <div class="form-group">
                                     <label>Customer type</label>
                                     <select class="form-control" name="role">
-                                        <option  @if($user->role == 'user') selected @endif> user </option>
-                                        <option  @if($user->role == 'owner') selected @endif> owner </option>
-                                        <option  @if($user->role == 'admin') selected @endif> admin </option>
-                                        <option  @if($user->role == 'author') selected @endif> author </option>
+                                        <option> user </option>
+                                        <option> owner </option>
+                                        <option> admin </option>
+                                        <option> author </option>
                                     </select>
                                 </div>
                                 <div class="reset-button">
