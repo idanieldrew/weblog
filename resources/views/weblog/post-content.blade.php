@@ -39,7 +39,7 @@
                         {!! $post->content !!}
                     </p>
                 </div>
-                <div class="container">
+                {{-- <div class="container">
                     <div class="row ">
                         <h3>Comments</h3>
                     </div>
@@ -55,13 +55,12 @@
                     </div>
                     <button class="btn btn-success" type="submit">Submit</button>
                 </form>
-
+                
                 <div class="container mb-5 mt-5">
                     <div class="card">
                         <div class="row">
+                            @foreach ($post->comments as $comment)
                             <div class="col-md-12">
-                                <h3 class="text-center mb-5"> Nested comment section </h3>
-                                @foreach ($post->comments as $comment)
                                     @if ($comment->comment_id == null)
                                         <div class="row">
                                             <div class="col-md-12">
@@ -105,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-                @endforeach
+                @endforeach --}}
             </div>
         </div>
     </div>
@@ -113,36 +112,7 @@
     </div>
     </div>
     </div>
-    </div>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
-
-
-        .card {
-            position: relative;
-            display: flex;
-            padding: 20px;
-            flex-direction: column;
-            min-width: 0;
-            word-wrap: break-word;
-            background-color: #fff;
-            background-clip: border-box;
-            border: 1px solid #d2d2dc;
-            border-radius: 11px;
-            -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
-            -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
-            box-shadow: 0px 0px 5px 0px rgb(161, 163, 164)
-        }
-
-        .media img {
-            width: 60px;
-            height: 60px
-        }
-
-        .reply a {
-            text-decoration: none
-        }
-
     </style>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 </x-app-layout>
