@@ -8,6 +8,7 @@
 
     <!-- Mobile Metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Site Metas -->
     <title>Weblog {{ $title ?? '' }}</title>
@@ -15,6 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <!-- Site Icons -->
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -45,346 +47,354 @@
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://www.google.com/recaptcha/api.js?" async defer></script>
 
 </head>
 
 <body>
     <!-- Start Main Top -->
-    <div class="main-top">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="text-slid-box">
-                        <div id="offer-box" class="carouselTicker">
-                            <ul class="offer-box">
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
-                                </li>
-                                <li>
-                                    <i class="fab fa-opencart"></i> Off 50%! Shop Now
-                                </li>
+    <div>
+        <div class="main-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="text-slid-box">
+                            <div id="offer-box" class="carouselTicker">
+                                <ul class="offer-box">
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Off 10%! Shop Now Man
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> 50% - 80% off on Fashion
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> 20% off Entire Purchase Promo code: offT20
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Off 50%! Shop Now
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="custom-select-box">
+                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
+                                <option>¥ JPY</option>
+                                <option>$ USD</option>
+                                <option>€ EUR</option>
+                            </select>
+                        </div>
+                        <div class="right-phone-box">
+                            <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+                        </div>
+                        <div class="our-link">
+                            <ul>
+                                <li><a href="#">My Account</a></li>
+                                <li><a href="#">Our location</a></li>
+                                <li><a href="#">Contact Us</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="custom-select-box">
-                        <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                            <option>¥ JPY</option>
-                            <option>$ USD</option>
-                            <option>€ EUR</option>
-                        </select>
-                    </div>
-                    <div class="right-phone-box">
-                        <p>Call US :- <a href="#"> +11 900 800 100</a></p>
-                    </div>
-                    <div class="our-link">
-                        <ul>
-                            <li><a href="#">My Account</a></li>
-                            <li><a href="#">Our location</a></li>
-                            <li><a href="#">Contact Us</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
-    <!-- End Main Top -->
+        <!-- End Main Top -->
 
-    <!-- Start Main Top -->
-    <header class="main-header">
-        <!-- Start Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
-            <div class="container">
-                <!-- Start Header Navigation -->
-                <div class="navbar-header">
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
-                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    {{-- <a class="navbar-brand" href="index.html"><img src="{{ asset('weblog/images/logo.png') }}" class="logo" alt=""></a> --}}
-                </div>
-                <!-- End Header Navigation -->
+        <!-- Start Main Top -->
+        <header class="main-header">
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+                <div class="container">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                            aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        {{-- <a class="navbar-brand" href="index.html"><img src="{{ asset('weblog/images/logo.png') }}" class="logo" alt=""></a> --}}
+                    </div>
+                    <!-- End Header Navigation -->
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                        @foreach ($categories as $category)
-                            <li class="dropdown dropdown-user">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    {{ $category->name }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    @foreach ($category->child as $child)
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                            @foreach ($categories as $category)
+                                <li class="dropdown dropdown-user">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        {{ $category->name }}
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        @foreach ($category->child as $child)
+                                            <li>
+                                                <a href="profile.html">
+                                                    <i class="fa fa-user"></i>{{ $child->name }}</a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                            @endforeach
+                            @guest
+                                <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
+                                <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
+                            @else
+                                <li class="dropdown dropdown-user">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <img src="{{ asset('panel/assets/dist/img/avatar5.png') }}" class="img-circle"
+                                            width="45" height="45" alt="user"></a>
+                                    <ul class="dropdown-menu">
                                         <li>
                                             <a href="profile.html">
-                                                <i class="fa fa-user"></i>{{ $child->name }}</a>
+                                                <i class="fa fa-user"></i> User Profile</a>
                                         </li>
-                                    @endforeach
-                                </ul>
+                                        <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
+                                        <li><a href="login.html">
+                                                <i class="fa fa-sign-out"></i> Signout</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            @endguest
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+
+                    <!-- Start Atribute Navigation -->
+                    <div class="attr-nav">
+                        <ul>
+                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                            <li class="side-menu"><a href="#">
+                                    <i class="fa fa-shopping-bag"></i>
+                                    <span class="badge">3</span>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <!-- End Atribute Navigation -->
+                </div>
+                <!-- Start Side Menu -->
+                <div class="side">
+                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                    <li class="cart-box">
+                        <ul class="cart-list">
+                            <li>
+                                <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-01.jpg') }}"
+                                        class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">Delica omtantur </a></h6>
+                                <p>1x - <span class="price">$80.00</span></p>
                             </li>
-                        @endforeach
-                        @guest
-                            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown dropdown-user">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{{ asset('panel/assets/dist/img/avatar5.png') }}" class="img-circle"
-                                        width="45" height="45" alt="user"></a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="profile.html">
-                                            <i class="fa fa-user"></i> User Profile</a>
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
-                                    <li><a href="login.html">
-                                            <i class="fa fa-sign-out"></i> Signout</a>
-                                    </li>
-                                </ul>
+                            <li>
+                                <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-02.jpg') }}"
+                                        class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">Omnes ocurreret</a></h6>
+                                <p>1x - <span class="price">$60.00</span></p>
                             </li>
-                        @endguest
-                    </ul>
+                            <li>
+                                <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-03.jpg') }}"
+                                        class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">Agam facilisis</a></h6>
+                                <p>1x - <span class="price">$40.00</span></p>
+                            </li>
+                            <li class="total">
+                                <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                                <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            </li>
+                        </ul>
+                    </li>
                 </div>
-                <!-- /.navbar-collapse -->
+                <!-- End Side Menu -->
+            </nav>
+            <!-- End Navigation -->
+        </header>
+        <!-- End Main Top -->
 
-                <!-- Start Atribute Navigation -->
-                <div class="attr-nav">
-                    <ul>
-                        <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu"><a href="#">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">3</span>
-                            </a></li>
-                    </ul>
-                </div>
-                <!-- End Atribute Navigation -->
-            </div>
-            <!-- Start Side Menu -->
-            <div class="side">
-                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                <li class="cart-box">
-                    <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-01.jpg') }}"
-                                    class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-02.jpg') }}"
-                                    class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="{{ asset('weblog/images/img-pro-03.jpg') }}"
-                                    class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
-                        <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                        </li>
-                    </ul>
-                </li>
-            </div>
-            <!-- End Side Menu -->
-        </nav>
-        <!-- End Navigation -->
-    </header>
-    <!-- End Main Top -->
-
-    <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </div>
-        </div>
-    </div>
-    <!-- End Top Search -->
-    {{ $slot }}
-    <!-- Start Instagram Feed  -->
-    <div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-01.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-02.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-03.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-04.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-05.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-06.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-07.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-08.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/images/instagram-img-09.jpg') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="item">
-                <div class="ins-inner-box">
-                    <img src="{{ asset('weblog/') }}" alt="" />
-                    <div class="hov-in">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Instagram Feed  -->
-
-
-    <!-- Start Footer  -->
-    <footer>
-        <div class="footer-main">
+        <!-- Start Top Search -->
+        <div class="top-search">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-widget">
-                            <h4>About ThewayShop</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                            </p>
-                            <ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
-                            </ul>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+        {{ $slot }}
+        <!-- Start Instagram Feed  -->
+        <div class="instagram-box">
+            <div class="main-instagram owl-carousel owl-theme">
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-01.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link">
-                            <h4>Information</h4>
-                            <ul>
-                                <li><a href="#">About Us</a></li>
-                                <li><a href="#">Customer Service</a></li>
-                                <li><a href="#">Our Sitemap</a></li>
-                                <li><a href="#">Terms &amp; Conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
-                                <li><a href="#">Delivery Information</a></li>
-                            </ul>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-02.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link-contact">
-                            <h4>Contact Us</h4>
-                            <ul>
-                                <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston
-                                        Street Wichita,<br> KS 67213 </p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705
-                                            770</a></p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a
-                                            href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                </li>
-                            </ul>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-03.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-04.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-05.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-06.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-07.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-08.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/images/instagram-img-09.jpg') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="ins-inner-box">
+                        <img src="{{ asset('weblog/') }}" alt="" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
-    <!-- End Footer  -->
+        <!-- End Instagram Feed  -->
 
-    {{-- <!-- Start copyright  -->
+
+        <!-- Start Footer  -->
+        <footer>
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-widget">
+                                <h4>About ThewayShop</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                </p>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Customer Service</a></li>
+                                    <li><a href="#">Our Sitemap</a></li>
+                                    <li><a href="#">Terms &amp; Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Contact Us</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756
+                                            <br>Preston
+                                            Street Wichita,<br> KS 67213
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888
+                                                705
+                                                770</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a
+                                                href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End Footer  -->
+
+        {{-- <!-- Start copyright  -->
     <div class="footer-copyright">
         <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
             <a href="https://html.design/">html design</a></p>
     </div>
     <!-- End copyright  --> --}}
-
+    </div>
     <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
     <!-- ALL JS FILES -->
+    </div>
+    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('weblog/js/jquery-3.2.1.min.js') }}"></script>
     <script src="{{ asset('weblog/js/popper.min.js') }}"></script>
     <script src="{{ asset('weblog/js/bootstrap.min.js') }}"></script>

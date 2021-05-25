@@ -30,4 +30,28 @@ class ContentPostController extends Controller
 
         return 'ok';
     }
+
+    public function fetchLikes (Request $request)
+    {
+        $post = Post::findOrFail($request->post);
+        
+        return response()->json([
+            'success' => 'true'
+        ]);
+        return response()->json($post);
+
+    }
+
+    public function manageLike(Request $request)
+    {
+        $post = Post::findOrFail($request->post);
+
+        $count = $post->like;
+        $post->like = $count + 1;
+        $post->save();
+
+        return response()->json([
+            'success' => 'ff'
+        ]);
+    }
 }

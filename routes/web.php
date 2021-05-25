@@ -24,7 +24,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 
 // add comment
-Route::post('/addCom', [ContentPostController::class,'store'])->name('contentp.store');
+// Route::post('/addCom', [ContentPostController::class,'store'])->name('contentp.store');
+
+Route::post('like',[ContentPostController::class,'fetchLikes'])->name('like1');
+Route::post('like/{id}',[ContentPostController::class,'manageLike'])->name('like2');
+
 
 // PANEL
 Route::prefix('/panel')->middleware('auth')->group(function () {
