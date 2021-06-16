@@ -34,7 +34,7 @@
                             <!-- Plugin content:powerpoint,txt,pdf,png,word,xl -->
                             <div class="btn-group">
                                 <div class="buttonexport">
-                                    <a href="#" class="btn btn-add" data-toggle="modal" data-target="#adduser"><i
+                                    <a href="{{ route('post.create') }}" class="btn btn-add"><i
                                             class="fa fa-plus"></i> Add Posts</a>
                                 </div>
                                 <button class="btn btn-exp btn-sm dropdown-toggle" data-toggle="dropdown"><i

@@ -14,8 +14,15 @@ class LandingPageController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(6);
-
+        if (request()->category) {
+            $posts = Post::with('categories')->whereHas('categories', function ($query) {
+                $query->where('slug', request()->category);
+            });
+        } else {
+            $posts = Post::inRandomOrder()->take(9);
+        }
+        $posts = $posts->paginate(6);
+        
         return view('weblog.landing', compact('posts'));
     }
 }

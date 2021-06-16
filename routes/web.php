@@ -68,6 +68,7 @@ Route::prefix('/panel')->middleware('auth')->group(function () {
         Route::put('/{category}', [CategoryController::class, 'update'])->name('category.update');
     });
 
+    // routes for posts
     Route::prefix('post')->group(function () {
         Route::get('/', [PostController::class, 'index'])->name('post.index');
 

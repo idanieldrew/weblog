@@ -5,13 +5,13 @@ namespace App\Http\View\Composer;
 use App\Models\Category;
 use Illuminate\View\View;
 
-class ViewComposer 
+class ViewComposer
 {
     protected $categories;
 
     public function __construct()
     {
-        $this->categories = Category::with('child')->where('category_id', null)->get();  
+        $this->categories = Category::with('child')->where('category_id', null)->limit(8)->get();
     }
 
     public function compose(View $view)
@@ -19,4 +19,3 @@ class ViewComposer
         $view->with('categories', $this->categories);
     }
 }
-

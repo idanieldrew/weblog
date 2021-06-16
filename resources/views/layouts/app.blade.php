@@ -116,7 +116,7 @@
         <!-- Start Main Top -->
         <header class="main-header">
             <!-- Start Navigation -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+            <nav class="navbar navbar-expand-lg navbar-transparent bg-transparent navbar-default bootsnav">
                 <div class="container">
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
@@ -133,24 +133,24 @@
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             @foreach ($categories as $category)
                                 <li class="dropdown dropdown-user">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <a href="{{ route('landing-page',['category' => $category->slug ] )}}" class="dropdown-toggle">
                                         {{ $category->name }}
                                     </a>
-                                    <ul class="dropdown-menu">
+                                    {{-- <ul class="dropdown-menu">
                                         @foreach ($category->child as $child)
                                             <li>
-                                                <a href="profile.html">
+                                                <a href="{{ $child->slug }}">
                                                     <i class="fa fa-user"></i>{{ $child->name }}</a>
                                             </li>
                                         @endforeach
-                                    </ul>
+                                    </ul> --}}
                                 </li>
                             @endforeach
                             @guest
                                 <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                             @else
-                                <li class="dropdown dropdown-user">
+                                <li class="dropdown dropdown-user" style="margin-left: 400px">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="{{ asset('panel/assets/dist/img/avatar5.png') }}" class="img-circle"
                                             width="45" height="45" alt="user"></a>
@@ -174,10 +174,10 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li class="side-menu"><a href="#">
+                            {{-- <li class="side-menu"><a href="#">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">3</span>
-                                </a></li>
+                                </a></li> --}}
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
