@@ -36,10 +36,8 @@ class ContentPostController extends Controller
         $post = Post::findOrFail($request->post);
         
         return response()->json([
-            'success' => 'true'
+            'post' => $post
         ]);
-        return response()->json($post);
-
     }
 
     public function manageLike(Request $request)
@@ -51,7 +49,8 @@ class ContentPostController extends Controller
         $post->save();
 
         return response()->json([
-            'success' => 'ff'
+            'success' => true,
+            'message' => 'liked'
         ]);
     }
 }

@@ -1854,14 +1854,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: ["post"],
   data: function data() {
@@ -1881,8 +1873,9 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this.renderLike();
 
-        console.log("ok1");
-        $("#success").html(response.data.message); // this.$refs.success.html(response.data.message);
+        console.log(response);
+
+        _this.$refs.success.html(response.data.message);
       })["catch"]();
     },
     renderLike: function renderLike() {
@@ -1892,7 +1885,8 @@ __webpack_require__.r(__webpack_exports__);
         post: this.post
       }).then(function (response) {
         // console.log(response);
-        console.log(response.data.post.like);
+        // console.log(response.data.post.like);
+        console.log(response);
         _this2.likes = response.data.post.like;
       })["catch"]();
     }
@@ -37462,17 +37456,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { ref: "success", attrs: { id: "success" } }, [
-      _c("h1", [_vm._v("LIKE")]),
-      _vm._v(" "),
       _c(
         "a",
         {
-          attrs: {
-            href: "#",
-            "data-toggle": "tooltip",
-            "data-placement": "right",
-            title: "Likes"
-          },
+          attrs: { href: "#" },
           on: {
             click: function($event) {
               $event.preventDefault()
@@ -37483,7 +37470,7 @@ var render = function() {
         [_c("i", { staticClass: "far fa-heart" })]
       ),
       _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.post.like))])
+      _c("p", [_vm._v(_vm._s(_vm.likes))])
     ])
   ])
 }

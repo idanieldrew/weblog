@@ -34,7 +34,12 @@
         <div class="about-box-main">
             <div class="container">
                 <div class="row">
-                    <like-component :post="{{ $post->id }}"></like-component>
+                    @auth()
+                        <like-component :post="{{ $post->id }}"></like-component>
+                    @endauth
+                    @guest
+                        <p>You can't like this post,so first <a href="{{ route('login') }}">Login</a></p>
+                    @endguest
                     <div class="col-lg-6">
                         <h2 class="noo-sh-title"><span>{{ $post->name }}</span></h2>
                         <p>

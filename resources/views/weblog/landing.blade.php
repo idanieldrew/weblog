@@ -5,8 +5,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
-                        <h1>latest blog</h1>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>
+                        <h1>POSTS</h1>
                     </div>
                 </div>
             </div>
@@ -28,7 +27,7 @@
                                 </div>
                                 <ul class="option-blog">
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i
-                                                class="far fa-heart"></i></a></li>
+                                                class="far fa-heart"></i>{{ $post->like }}</a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Views"><i
                                                 class="fas fa-eye"></i></a></li>
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Comments"><i

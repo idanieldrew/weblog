@@ -21,7 +21,7 @@ class LandingPageController extends Controller
         } else {
             $posts = Post::inRandomOrder()->take(9);
         }
-        $posts = $posts->paginate(6);
+        $posts = $posts->where('featured',1)->paginate(6);
         
         return view('weblog.landing', compact('posts'));
     }

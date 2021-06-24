@@ -1,16 +1,8 @@
 <template>
   <div class="container">
     <div id="success" ref="success">
-      <h1>LIKE</h1>
-      <a
-        href="#"
-        @click.prevent="likePost"
-        data-toggle="tooltip"
-        data-placement="right"
-        title="Likes"
-        ><i class="far fa-heart"></i>
-      </a>
-      <p>{{ post.like }}</p>
+      <a href="#" @click.prevent="likePost"><i class="far fa-heart"></i> </a>
+      <p>{{ likes }}</p>
     </div>
   </div>
 </template>
@@ -35,9 +27,8 @@ export default {
         })
         .then((response) => {
           this.renderLike();
-          console.log("ok1");
-          $("#success").html(response.data.message);
-          // this.$refs.success.html(response.data.message);
+          console.log(response);
+          this.$refs.success.html(response.data.message);
         })
         .catch();
     },
@@ -48,7 +39,9 @@ export default {
         })
         .then((response) => {
           // console.log(response);
-          console.log(response.data.post.like);
+          // console.log(response.data.post.like);
+          console.log(response);
+
           this.likes = response.data.post.like;
         })
         .catch();
