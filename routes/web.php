@@ -20,6 +20,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/comment/store', [ContentPostController::class,'storeComment'])->name('comment.add');
+Route::post('/reply/store', [ContentPostController::class,'replyStore'])->name('reply.add');
+
+
+
+
 //show landing page
 Route::get('/', [LandingPageController::class, 'index'])->name('landing-page');
 

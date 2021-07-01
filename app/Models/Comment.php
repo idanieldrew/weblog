@@ -9,7 +9,7 @@ class Comment extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['content', 'featured', 'user_id', 'post_id', 'comment_id'];
+    protected $fillable = ['parent_id'];
 
     public function user()
     {
@@ -23,13 +23,11 @@ class Comment extends Model
 
     public function replies()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 
     public function showFeatured()
     {
-        return !! $this->featured ? 'checked' : '';
+        return !!$this->featured ? 'checked' : '';
     }
 }
-
-

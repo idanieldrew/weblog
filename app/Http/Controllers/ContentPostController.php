@@ -31,10 +31,10 @@ class ContentPostController extends Controller
         return 'ok';
     }
 
-    public function fetchLikes (Request $request)
+    public function fetchLikes(Request $request)
     {
         $post = Post::findOrFail($request->post);
-        
+
         return response()->json([
             'post' => $post
         ]);
@@ -52,5 +52,38 @@ class ContentPostController extends Controller
             'success' => true,
             'message' => 'liked'
         ]);
+    }
+
+
+    public function storeComment(Request $request)
+    {
+        $comment = new Comment;
+
+        $comment->content = $request->comment;
+
+        $comment->user()->associate($request->user());
+
+        $post = Post::find($request->post_id);
+
+        $post->comments()->whereNull('parent_id')->save($comment);
+
+        return back();
+    }
+
+    public function replyStore(Request $request)
+    {
+        $reply = new Comment();
+
+        $reply->content = $request->get('comment');
+
+        $reply->user()->associate($request->user());
+
+        $reply->parent_id = $request->get('comment_id');
+
+        $post = Post::find($request->get('post_id'));
+
+        $post->comments()->save($reply);
+
+        return back();
     }
 }
