@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PostCreated;
 use App\Http\Requests\Post\storePostRequest;
 use App\Http\Requests\Post\updatePostRequest;
 use App\Models\Category;
@@ -67,34 +68,11 @@ class PostController extends Controller
         $data['user_id'] = auth()->user()->id;
         $post = Post::create($data);
 
-
         $post->categories()->sync($categoryId);
 
+        event(new PostCreated($post));
+
         return redirect()->route('post.index')->with('success-message', 'post submit is successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Models\Post $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Models\Post $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        $categoryName = $post->first()->categories->first()->name;
-
-        return view('dashboard.post.edit', compact('post', 'categoryName'));
     }
 
     /**
