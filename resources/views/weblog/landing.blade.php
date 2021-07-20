@@ -23,7 +23,7 @@
                                     <a href="{{ route('content', $post->slug) }}">
                                         <h3>{{ $post->name }}</h3>
                                     </a>
-                                    <p>{!! $post->content !!}</p>
+                                    <p>{!! Str::limit($post->content,20) !!}</p>
                                 </div>
                                 <ul class="option-blog">
                                     <li><a href="#" data-toggle="tooltip" data-placement="right" title="Likes"><i

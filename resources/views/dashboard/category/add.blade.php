@@ -55,7 +55,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <label>slug</label>
                                     <input type="text" name="slug" value="" id="slug" class="form-control" placeholder="Enter slug"
                                            required>
@@ -64,7 +64,7 @@
                                         <p style="color: red">{{ $message }}</p>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <label>Customer type</label>
                                     <select class="form-control" id="category_id" name="category_id">

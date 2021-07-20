@@ -64,7 +64,6 @@ class PostController extends Controller
 
         $data = $request->validated();
         $data['banner'] = $fileName;
-        $data['slug'] = Str::slug($request->name);
         $data['user_id'] = auth()->user()->id;
         $post = Post::create($data);
 
