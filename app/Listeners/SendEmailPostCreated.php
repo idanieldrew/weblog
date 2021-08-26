@@ -31,11 +31,12 @@ class SendEmailPostCreated implements ShouldQueue
      */
     public function handle(PostCreated $event)
     {
-        $users = User::all();
+        $user = User::find(1);
 
-        foreach ($users as $user) {
 
-            Mail::to($user->email)->send(new PostCreatedMail($user,$event->post));
-        }
+            $mail = new PostCreatedMail($user, $event->post);
+
+            Mail::to($user->email)->send($mail);
+        
     }
 }

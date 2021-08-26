@@ -34,7 +34,7 @@ class PostCreatedMail extends Mailable
      */
     public function build()
     {
-        return $this->view('Mail.Post.Created')
+        return $this->view('Mail.Post.CreatePost')
             ->with([
                 'user' => $this->user->name,
                 'post' => $this->post->title,

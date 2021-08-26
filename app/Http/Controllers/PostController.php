@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Faker\Provider\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Str;
 
 class PostController extends Controller
@@ -69,8 +70,9 @@ class PostController extends Controller
 
         $post->categories()->sync($categoryId);
 
-        event(new PostCreated($post));
+        //event(new PostCreated($post));
 
+        Event::dispatch(new PostCreated($post));
         return redirect()->route('post.index')->with('success-message', 'post submit is successfully');
     }
 

@@ -132,11 +132,16 @@
                                                 <td>{{ getStandardFormatDate($post->updated_at) }}</td>
                                                 {{-- <td><span class="label-custom label label-default">Active</span> --}}
                                                 <td>
+                                                    @can('update',$post)
                                                     <a href="{{ route('post.edit', $post->id) }}"
                                                         class="btn btn-add btn-sm" data-toggle="modal">
                                                         <i class="fa fa-pencil">
                                                         </i>
                                                     </a>
+                                                    @else
+                                                    <p>You Cant Update or Delete This Post</p>
+                                                    @endcan
+                                                    @can('delete',$post)
                                                     <a href="{{ route('post.destroy', $post->id) }}"
                                                         onclick="destroyUser(event,{{ $post->id }})"
                                                         class="btn btn-danger btn-sm">
@@ -149,6 +154,7 @@
                                                         @method('delete')
                                                         @csrf
                                                     </form>
+                                                    @endcan
                                                 </td>
                                             </tr>
                                         @endforeach

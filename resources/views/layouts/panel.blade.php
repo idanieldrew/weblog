@@ -341,11 +341,11 @@
                         <!-- user -->
                         <li class="dropdown dropdown-user">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="{{ asset('Avatar/avatar5.png') }}" class="img-circle" width="45" height="45"
-                                    alt="user"></a>
+                                <img src="{{ asset('Avatar/avatar5.png') }}" class="img-circle" width="45"
+                                    height="45" alt="user"></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="{{ route('profile.edit',auth()->user()->id) }}">
+                                    <a href="{{ route('profile.edit', auth()->user()->id) }}">
                                         <i class="fa fa-user"></i> User Profile</a>
                                 </li>
                                 <li><a href="#"><i class="fa fa-inbox"></i> Inbox</a></li>
@@ -657,94 +657,39 @@
                             <li><a href="{{ route('user.show') }}">Show</a></li>
                         </ul>
                     </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-users"></i><span>Category</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('category.create') }}">Add</a></li>
-                            <li><a href="{{ route('category.index') }}">Show</a></li>
-                        </ul>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-users"></i><span>Post</span>
-                            <span class="pull-right-container">
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </span>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="{{ route('post.create') }}">Add</a></li>
-                            <li><a href="{{ route('post.index') }}">Show</a></li>
-                        </ul>
-                    </li>
 
-                    <li class="treeview">
-                        <a href="{{ route('comment.index') }}">
-                            <i class="fa fa-users"></i><span>Comment</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    {{-- <li>
-                        <a href="items.html">
-                            <i class="fa fa-file-o"></i><span>Items</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="department.html">
-                            <i class="fa fa-tree"></i><span>Departments</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="document.html">
-                            <i class="fa fa-file-text"></i> <span>Documents</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="train.html">
-                            <i class="fa fa-clock-o"></i><span>Training</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="calender.html">
-                            <i class="fa fa-calendar"></i> <span>Calender</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="notice.html">
-                            <i class="fa fa-file-text"></i> <span>Notice Board</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="message.html">
-                            <i class="fa fa-envelope-o"></i> <span>Message</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="note.html">
-                            <i class="fa fa-comment"></i> <span>Notes</span>
-                            <span class="pull-right-container">
-                            </span>
-                        </a> --}}
-                    </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i><span>Category</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('category.create') }}">Add</a></li>
+                                <li><a href="{{ route('category.index') }}">Show</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-users"></i><span>Post</span>
+                                <span class="pull-right-container">
+                                    <i class="fa fa-angle-left pull-right"></i>
+                                </span>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="{{ route('post.create') }}">Add</a></li>
+                                <li><a href="{{ route('post.index') }}">Show</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="treeview">
+                            <a href="{{ route('comment.index') }}">
+                                <i class="fa fa-users"></i><span>Comment</span>
+                                <span class="pull-right-container">
+                                </span>
+                            </a>
+                        </li>
                 </ul>
             </div>
             <!-- /.sidebar -->
@@ -882,7 +827,6 @@
             });
         }
         dash();
-
     </script>
 </body>
 

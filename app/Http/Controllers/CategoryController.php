@@ -47,7 +47,6 @@ class CategoryController extends Controller
     {
         $categories = Category::create([
             'name' => $request->name,
-            // 'slug' => Str::slug($request->slug),
             'category_id' => $request->category_id
         ]);
 

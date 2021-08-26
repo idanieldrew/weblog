@@ -48,4 +48,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(Post::class);
     }
+
+    public function role($roles)
+    {
+        if ($roles === 'admin') {
+            return 'admin';
+        } elseif ($roles === 'supervisor') {
+            return 'super';
+        } else {
+            return 'user';
+        }
+    }
 }
